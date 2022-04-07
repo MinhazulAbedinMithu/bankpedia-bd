@@ -1,6 +1,7 @@
 import Head from "next/head";
 import Image from "next/image";
 import { About, Banner, Header } from "../components";
+import { allBanks } from "../fakeData";
 import styles from "../styles/Home.module.css";
 
 export default function Home() {
@@ -22,6 +23,23 @@ export default function Home() {
 						local-foreign, private-public and commercial-specialized banks
 						information those are operating their services in Bangladesh.
 					</p>
+				</div>
+				<div className="container mx-auto">
+					<h2 className="text-5xl font-bold "> Popular Banks</h2>
+					<div className="flex flex-wrap">
+						{allBanks.map((bank, index) => {
+							return (
+								<div key={index}>
+									<Image
+										src={bank.details.logo.src}
+										height={bank.details.logo.height}
+										width={bank.details.logo.width}
+										alt="Bank Logo"
+									/>
+								</div>
+							);
+						})}
+					</div>
 				</div>
 			</main>
 		</div>

@@ -126,8 +126,6 @@ const Dropdown = ({ subRoutes, dropdown, depthLevel }) => {
 const MenuItems = ({ route, depthLevel }) => {
 	const [dropdown, setDropdown] = useState(false);
 
-	console.log(dropdown);
-
 	const ref = useRef();
 
 	useEffect(() => {
@@ -169,7 +167,9 @@ const MenuItems = ({ route, depthLevel }) => {
 						type="button"
 						onClick={() => setDropdown((prev) => !prev)}
 					>
-						{route.title}{" "}
+						<Link href={route.slug}>
+							<a>{route.title}</a>
+						</Link>
 						<span className="text-sm text-cyan-300">
 							{depthLevel > 0 ? <BiRightArrow /> : <BiDownArrow />}
 						</span>
@@ -191,7 +191,7 @@ const MenuItems = ({ route, depthLevel }) => {
 
 const Header = () => {
 	return (
-		<header className="w-full bg-cyan-900 text-white">
+		<header className="w-full bg-cyan-900 text-white sticky top-0 z-[1000] shadow-xl shadow-cyan-300/50">
 			<div className="container flex items-center w-full mx-auto py-2 justify-around">
 				<div className="logo">
 					<Link href="/">
