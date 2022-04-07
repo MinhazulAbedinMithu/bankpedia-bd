@@ -1,6 +1,6 @@
 import React from "react";
 import BankCard from "../../../components/BankCard";
-import { allBanks } from "../../../fakeData";
+import { getAllBanks } from "../../../fakeData";
 
 const PublicBanks = () => {
 	return (
@@ -27,7 +27,7 @@ const PublicBanks = () => {
 				</p>
 
 				<div className="flex flex-col w-2/3 mx-auto gap-10 py-10">
-					{allBanks
+					{getAllBanks()
 						.filter((bank) => bank.bankType === "public")
 						.map((bank, index) => {
 							return <BankCard key={index} bank={bank} />;

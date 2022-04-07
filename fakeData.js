@@ -1,5 +1,6 @@
 import dbblLogo from "./public/images/banks-logo/dbbl.jpg";
 import alArafah from "./public/images/banks-logo/al-arafah.jpg";
+import Banks from "./pages/banks";
 
 const allBanks = [
 	{
@@ -265,4 +266,27 @@ const allBanks = [
 	},
 ];
 
-export { allBanks };
+const getAllBanks = () => {
+	return allBanks;
+};
+
+const getAllSlugs = () => {
+	let slugs = [];
+	getAllBanks().map((bank) =>
+		slugs.push(`/banks/${bank.title.toLocaleLowerCase().split(" ").join("-")}`)
+	);
+	return slugs;
+};
+
+const getBankInfo = (slug) => {
+	let bankInfo = null;
+	getAllBanks().map((bank) => {
+		if (bank.title.toLocaleLowerCase().split(" ").join("-") === slug) {
+			bankInfo = bank;
+			return;
+		}
+	});
+	return bankInfo;
+};
+
+export { allBanks, getAllBanks, getAllSlugs, getBankInfo };

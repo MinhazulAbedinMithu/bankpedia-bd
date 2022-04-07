@@ -3,7 +3,7 @@ import Link from "next/link";
 import React from "react";
 import BankCard from "../../../components/BankCard";
 
-import { allBanks } from "../../../fakeData";
+import { getAllBanks } from "../../../fakeData";
 
 const PrivateBanks = () => {
 	return (
@@ -30,12 +30,10 @@ const PrivateBanks = () => {
 				</p>
 
 				<div className="flex flex-col w-2/3 mx-auto gap-10 py-10">
-					{allBanks
+					{getAllBanks()
 						.filter((bank) => bank.bankType === "private")
 						.map((bank, index) => {
-							return (
-								<BankCard key={index} bank={bank}/>
-							);
+							return <BankCard key={index} bank={bank} />;
 						})}
 				</div>
 			</div>
